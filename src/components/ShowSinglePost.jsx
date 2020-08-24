@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+
 import "./singlePost.css";
 class Post extends Component{
     state={
@@ -48,8 +48,8 @@ class Post extends Component{
                         <label htmlFor="content">Content:</label>
                         <input onChange={this.setContent} type="text" id="content"/>
                     </div>
-                    <button onClick={this.savePost} type="submit" className ="create-btn">
-                        <Link to={{pathname:"/show-posts", createdPost: this.state.post }}>Create a post</Link></button>
+                    <button onClick={this.savePost} className ="create-btn">
+                        Create a post</button>
                     </div>
                 </form>
             </section>
