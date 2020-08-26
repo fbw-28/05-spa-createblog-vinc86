@@ -1,59 +1,30 @@
-import React, {Component} from "react";
-
+import React from "react";
+import {Link} from "react-router-dom";
 import "./singlePost.css";
-class Post extends Component{
-    state={
-        username: '',
-        title: '',
-        content: '',
-        post:{}
-    }
-
-    setUsername=(e)=>{
-        e.preventDefault();
-        this.setState({username: e.target.value})
-    }
-    setTitle=(e)=>{
-        e.preventDefault();
-        this.setState({title: e.target.value})
-    }
-    setContent=(e)=>{
-        e.preventDefault();
-        this.setState({content: e.target.value})
-    }
-
-    savePost =(e)=>{
-        e.preventDefault();
-        this.setState({post:{
-            username: this.state.username,
-            title: this.state.title,
-            content: this.state.content
-        }})
-    }
-    render(){
+const Post=({setUser, setTitle, setContent, savePost})=>{
+    
         return(
             <section className="post-section">
-                <form >
+                <form onSubmit={savePost}>
                 <h2>Create a Post!</h2>
                     <div className="form-container">
                     <div className="form-input">   
                         <label htmlFor="username">Username:</label>
-                        <input onChange={this.setUsername} type="text" id="username"/>
+                        <input onChange={setUser} type="text" id="username"/>
                     </div>
                     <div className="form-input"> 
                         <label htmlFor="title">Title:</label>
-                        <input onChange={this.setTitle} type="text" id="title"/>
+                        <input onChange={setTitle} type="text" id="title"/>
                     </div>
                     <div className="form-input"> 
                         <label htmlFor="content">Content:</label>
-                        <input onChange={this.setContent} type="text" id="content"/>
+                        <input onChange={setContent} type="text" id="content"/>
                     </div>
-                    <button onClick={this.savePost} className ="create-btn">
-                        Create a post</button>
+                    <button type="submit" className ="create-btn">
+                        Save Post</button>
                     </div>
                 </form>
             </section>
         )
-    }
 }
 export default Post
